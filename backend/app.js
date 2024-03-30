@@ -2,8 +2,10 @@ const express = require("express");
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const stuffRouter = require("./routes/stuff");
+const userRouter = require("./routes/user");
 
-mongoose.connect('mongodb+srv://lazybenmansour:Ixre9325@cluster0.untxlgf.mongodb.net/<dbname>',
+
+mongoose.connect('mongodb+srv://lazybenmansour:xxxxxx@cluster0.untxlgf.mongodb.net/<dbname>',
   { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch((error) => console.error('Failed to connect to MongoDB:', error));
@@ -20,5 +22,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 app.use('/api/stuff' , stuffRouter);
+app.use('/api/auth' , userRouter);
+
 
 module.exports = app;

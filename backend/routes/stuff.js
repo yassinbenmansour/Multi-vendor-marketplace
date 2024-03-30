@@ -1,19 +1,19 @@
 const express = require("express");
-const Thing = require('../model/Thing');
+const auth = require("../middleware/auth")
 const stuffController = require('../controller/stuff')
 
 const Router = express.Router();
 
 
-Router.post('/', stuffController.CreateThing );
+Router.post('/',auth, stuffController.CreateThing );
 
-Router.get('/', stuffController.GetAllThings);
+Router.get('/',auth, stuffController.GetAllThings);
 
-Router.get('/:id', stuffController.GetThing);
+Router.get('/:id',auth, stuffController.GetThing);
 
-Router.put('/:id', stuffController.updateThing);
+Router.put('/:id',auth, stuffController.updateThing);
 
-Router.delete('/:id', stuffController.DeleteThing);
+Router.delete('/:id',auth, stuffController.DeleteThing);
 
 
 module.exports = Router;
